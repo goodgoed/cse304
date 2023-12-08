@@ -1,0 +1,15 @@
+class StaticExample {
+  static int counter;
+  
+  static int incrementCounter() {
+    this.counter++;
+    return this.counter;
+  }
+}
+
+class A {
+  int incrementCounter(){
+    StaticExample.counter++;
+    return StaticExample.counter;
+  }
+}

@@ -1,0 +1,25 @@
+--------------------------------------------------------------------------
+Class Name: rfib
+Superclass Name: 
+Fields:
+Constructors:
+Methods:
+METHOD: 1, fib, rfib, private, static, int
+Method Parameters: 1
+Variable Table:
+VARIABLE: 1, n, formal, int
+Method Body:
+Block([
+If(Binary(leq, Variable(1), Constant(Integer-constant(2))), Return(Constant(Integer-constant(1))), Return(Binary(add, Method-call(Class(rfib), fib, [Binary(sub, Variable(1), Constant(Integer-constant(1)))]), Method-call(Class(rfib), fib, [Binary(sub, Variable(1), Constant(Integer-constant(2)))]))))
+])
+METHOD: 2, main, rfib, public, static, void
+Method Parameters: 
+Variable Table:
+VARIABLE: 2, n, local, int
+Method Body:
+Block([
+Expr(Assign(Variable(2), Method-call(Class(In), scan_int, []), int, int)),
+Expr(Method-call(Class(Out), print, [Constant(String-constant(Fib = ))])),
+Expr(Method-call(Class(Out), print, [Constant(String-constant(\n))]))
+])
+--------------------------------------------------------------------------

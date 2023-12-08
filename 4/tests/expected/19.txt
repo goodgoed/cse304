@@ -1,0 +1,18 @@
+--------------------------------------------------------------------------
+Class Name: test005
+Superclass Name: 
+Fields:
+Constructors:
+Methods:
+METHOD: 1, main, test005, public, static, void
+Method Parameters: 
+Variable Table:
+VARIABLE: 1, a, local, boolean
+Method Body:
+Block([
+Expr(Assign(Variable(1), Binary(gt, Constant(Integer-constant(17)), Constant(Integer-constant(14))), boolean, boolean)),
+Expr(Assign(Variable(1), Binary(or, Constant(True), Constant(False)), boolean, boolean)),
+Expr(Assign(Variable(1), Binary(and, Constant(True), Constant(False)), boolean, boolean)),
+Expr(Assign(Variable(1), Binary(neq, Constant(Integer-constant(17)), Constant(Integer-constant(14))), boolean, boolean))
+])
+--------------------------------------------------------------------------

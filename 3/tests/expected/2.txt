@@ -1,0 +1,15 @@
+--------------------------------------------------------------------------
+Class Name: Base
+Superclass Name: 
+Fields:
+FIELD: 1, x, Base, private, instance, int
+Constructors:
+Methods:
+METHOD: 1, getX, Base, private, instance, int
+Method Parameters: 
+Variable Table:
+Method Body:
+Block([
+Return(Field-access(This, x))
+])
+--------------------------------------------------------------------------

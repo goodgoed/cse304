@@ -1,0 +1,16 @@
+--------------------------------------------------------------------------
+Class Name: Simple
+Superclass Name: 
+Fields:
+Constructors:
+Methods:
+METHOD: 1, test, Simple, private, instance, void
+Method Parameters: 1
+Variable Table:
+VARIABLE: 1, a, formal, int
+Method Body:
+Block([
+Expr(Assign(Variable(1), Variable(1), int, int)),
+Expr(Assign(Variable(1), Unary(uminus, Variable(1)), int, int))
+])
+--------------------------------------------------------------------------

@@ -1,0 +1,16 @@
+--------------------------------------------------------------------------
+Class Name: test021
+Superclass Name: 
+Fields:
+Constructors:
+Methods:
+METHOD: 1, main, test021, public, static
+Method Parameters: 
+Variable Table:
+VARIABLE: 1, a, local, int
+Method Body:
+Block([
+Expr(Assign(Variable(1), Constant(Integer-constant(10)))),
+Expr(Auto(Variable(1), inc, pre))
+])
+--------------------------------------------------------------------------

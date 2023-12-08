@@ -1,0 +1,16 @@
+--------------------------------------------------------------------------
+Class Name: ComplexExpressions
+Superclass Name: 
+Fields:
+Constructors:
+Methods:
+METHOD: 1, calculate, ComplexExpressions, private, instance, int
+Method Parameters: 1, 2
+Variable Table:
+VARIABLE: 1, x, formal, int
+VARIABLE: 2, y, formal, int
+Method Body:
+Block([
+Return(Binary(sub, Binary(add, Binary(mul, Variable(1), Variable(2)), Binary(div, Variable(1), Variable(2))), Binary(sub, Variable(1), Variable(2))))
+])
+--------------------------------------------------------------------------

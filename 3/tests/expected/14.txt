@@ -1,0 +1,27 @@
+--------------------------------------------------------------------------
+Class Name: nrfib
+Superclass Name: 
+Fields:
+Constructors:
+Methods:
+METHOD: 1, main, nrfib, public, static
+Method Parameters: 
+Variable Table:
+VARIABLE: 1, n, local, int
+VARIABLE: 2, i, local, int
+VARIABLE: 3, fn, local, int
+VARIABLE: 4, fn_prev, local, int
+Method Body:
+Block([
+Expr(Assign(Variable(1), Method-call(Class(In), scan_int, []))),
+Expr(Assign(Variable(3), Constant(Integer-constant(1)))),
+Expr(Assign(Variable(4), Constant(Integer-constant(0)))),
+For(Expr(Assign(Variable(2), Constant(Integer-constant(1)))), Binary(lt, Variable(2), Variable(1)), Expr(Assign(Variable(2), Binary(add, Variable(2), Constant(Integer-constant(1))))), Block([
+Expr(Assign(Variable(3), Binary(add, Variable(4), Variable(3)))),
+Expr(Assign(Variable(4), Binary(sub, Variable(3), Variable(4))))
+])),
+Expr(Method-call(Class(Out), print, [Constant(String-constant(Fib = ))])),
+Expr(Method-call(Class(Out), print, [Variable(3)])),
+Expr(Method-call(Class(Out), print, [Constant(String-constant(\n))]))
+])
+--------------------------------------------------------------------------

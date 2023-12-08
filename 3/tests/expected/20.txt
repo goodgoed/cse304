@@ -1,0 +1,15 @@
+--------------------------------------------------------------------------
+Class Name: test008
+Superclass Name: 
+Fields:
+Constructors:
+Methods:
+METHOD: 1, main, test008, public, static
+Method Parameters: 
+Variable Table:
+VARIABLE: 1, a, local, boolean
+Method Body:
+Block([
+Expr(Assign(Variable(1), Binary(neq, Constant(Integer-constant(17)), Constant(Integer-constant(14)))))
+])
+--------------------------------------------------------------------------

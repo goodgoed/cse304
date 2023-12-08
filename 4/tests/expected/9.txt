@@ -1,0 +1,13 @@
+--------------------------------------------------------------------------
+Class Name: NoMethodsFields
+Superclass Name: 
+Fields:
+Constructors:
+CONSTRUCTOR: 1, private
+Constructor Parameters: 
+Variable Table:
+Constructor Body:
+Block([
+])
+Methods:
+--------------------------------------------------------------------------

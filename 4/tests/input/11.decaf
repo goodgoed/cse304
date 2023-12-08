@@ -1,0 +1,15 @@
+class A{
+    int i;
+
+    int test_skip_stmt(){
+        if(this.i < 0){
+            Out.print("IF");
+        }
+
+        for(;;){
+            Out.print("FOR");
+        }
+
+        return 0;
+    }
+}

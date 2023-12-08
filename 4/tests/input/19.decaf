@@ -1,0 +1,11 @@
+class test005
+{
+    public static void main()
+    {   
+        boolean a;
+        a = 17 > 14;
+        a = true || false;
+        a = true && false;
+        a = 17 != 14;
+    }
+}

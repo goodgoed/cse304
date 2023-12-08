@@ -1,0 +1,13 @@
+class Parent {
+  int x;
+
+  int getX() {
+    return this.x;
+  }
+}
+
+class Child extends Parent {
+  int getX() {
+    return super.getX() + 1;
+  }
+}

@@ -1,0 +1,16 @@
+--------------------------------------------------------------------------
+Class Name: WithConstructor
+Superclass Name: 
+Fields:
+FIELD: 1, x, WithConstructor, private, instance, int
+Constructors:
+CONSTRUCTOR: 1, private
+Constructor Parameters: 1
+Variable Table:
+VARIABLE: 1, x, formal, int
+Constructor Body:
+Block([
+Expr(Assign(Field-access(This, x), Variable(1)))
+])
+Methods:
+--------------------------------------------------------------------------

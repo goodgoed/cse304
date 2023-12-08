@@ -1,0 +1,6 @@
+class Simple {
+    void test(int a){
+        a = +a;
+        a = -a;
+    }
+}

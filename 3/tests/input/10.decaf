@@ -1,0 +1,5 @@
+class ComplexExpressions {
+  int calculate(int x, int y) {
+    return (x * y) + (x / y) - (x - y);
+  }
+}

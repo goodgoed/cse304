@@ -1,0 +1,17 @@
+--------------------------------------------------------------------------
+Class Name: test002
+Superclass Name: 
+Fields:
+Constructors:
+Methods:
+METHOD: 1, main, test002, public, static
+Method Parameters: 
+Variable Table:
+VARIABLE: 1, a, local, int
+VARIABLE: 2, b, local, int
+Method Body:
+Block([
+Expr(Assign(Variable(1), Constant(Integer-constant(17)))),
+Expr(Assign(Variable(2), Unary(uminus, Variable(1))))
+])
+--------------------------------------------------------------------------

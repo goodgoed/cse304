@@ -1,0 +1,21 @@
+--------------------------------------------------------------------------
+Class Name: Overloading
+Superclass Name: 
+Fields:
+Constructors:
+Methods:
+METHOD: 1, print, Overloading, private, instance
+Method Parameters: 1
+Variable Table:
+VARIABLE: 1, x, formal, int
+Method Body:
+Block([
+])
+METHOD: 2, print, Overloading, private, instance
+Method Parameters: 2
+Variable Table:
+VARIABLE: 2, x, formal, float
+Method Body:
+Block([
+])
+--------------------------------------------------------------------------

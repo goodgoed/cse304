@@ -1,0 +1,21 @@
+--------------------------------------------------------------------------
+Class Name: A
+Superclass Name: 
+Fields:
+FIELD: 1, i, A, private, instance, int
+Constructors:
+Methods:
+METHOD: 1, test_skip_stmt, A, private, instance, int
+Method Parameters: 
+Variable Table:
+Method Body:
+Block([
+If(Binary(lt, Field-access(This, i, 1), Constant(Integer-constant(0))), Block([
+Expr(Method-call(Class(Out), print, [Constant(String-constant(IF))]))
+]), Skip()),
+For(Skip(), Skip(), Skip(), Block([
+Expr(Method-call(Class(Out), print, [Constant(String-constant(FOR))]))
+])),
+Return(Constant(Integer-constant(0)))
+])
+--------------------------------------------------------------------------

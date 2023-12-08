@@ -1,0 +1,7 @@
+class Base {
+  int x;
+  
+  int getX() {
+    return this.x;
+  }
+}

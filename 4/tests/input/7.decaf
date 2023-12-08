@@ -1,0 +1,7 @@
+class WithConstructor {
+  int x;
+
+  WithConstructor(int x) {
+    this.x = x;
+  }
+}

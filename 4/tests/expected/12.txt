@@ -1,0 +1,51 @@
+--------------------------------------------------------------------------
+Class Name: IntList
+Superclass Name: 
+Fields:
+FIELD: 1, value, IntList, private, instance, int
+FIELD: 2, next, IntList, private, instance, user(IntList)
+Constructors:
+Methods:
+METHOD: 1, create_list, IntList, public, static, user(IntList)
+Method Parameters: 1
+Variable Table:
+VARIABLE: 1, v, formal, int
+VARIABLE: 2, new_element, local, user(IntList)
+Method Body:
+Block([
+Expr(Assign(Variable(2), New-object(IntList, []), IntList, IntList)),
+Expr(Assign(Field-access(Variable(2), value, 1), Variable(1), int, int)),
+Expr(Assign(Field-access(Variable(2), next, 2), Constant(Null), IntList, null)),
+Return(Variable(2))
+])
+METHOD: 2, insert, IntList, public, instance, user(IntList)
+Method Parameters: 3
+Variable Table:
+VARIABLE: 3, v, formal, int
+VARIABLE: 4, new_element, local, user(IntList)
+Method Body:
+Block([
+Expr(Assign(Variable(4), Method-call(Class(IntList), create_list, [Variable(3)]), IntList, IntList)),
+Expr(Assign(Field-access(Variable(4), next, 2), This, IntList, IntList)),
+Return(Variable(4))
+])
+METHOD: 3, search, IntList, public, instance, boolean
+Method Parameters: 5
+Variable Table:
+VARIABLE: 5, v, formal, int
+Method Body:
+Block([
+If(Binary(eq, Field-access(This, value, 1), Variable(5)), Block([
+Return(Constant(True))
+]), If(Binary(eq, Field-access(This, next, 2), Constant(Null)), Block([
+Return(Constant(False))
+]), Return(Method-call(Field-access(This, next, 2), search, [Variable(5)]))))
+])
+METHOD: 4, length, IntList, public, instance, int
+Method Parameters: 
+Variable Table:
+Method Body:
+Block([
+If(Binary(eq, Field-access(This, next, 2), Constant(Null)), Return(Constant(Integer-constant(1))), Return(Binary(add, Constant(Integer-constant(1)), Method-call(Field-access(This, next, 2), length, []))))
+])
+--------------------------------------------------------------------------

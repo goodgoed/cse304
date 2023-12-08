@@ -1,0 +1,56 @@
+--------------------------------------------------------------------------
+Class Name: A
+Superclass Name: 
+Fields:
+FIELD: 1, x, A, private, instance, int
+Constructors:
+CONSTRUCTOR: 1, private
+Constructor Parameters: 
+Variable Table:
+Constructor Body:
+Block([
+Expr(Assign(Field-access(This, x, 1), Constant(Integer-constant(0)), int, int))
+])
+Methods:
+METHOD: 1, f, A, private, instance, int
+Method Parameters: 
+Variable Table:
+Method Body:
+Block([
+Return(Binary(add, Field-access(This, x, 1), Constant(Integer-constant(1))))
+])
+METHOD: 2, g, A, public, instance, int
+Method Parameters: 
+Variable Table:
+VARIABLE: 1, i, local, int
+Method Body:
+Block([
+Expr(Assign(Variable(1), Method-call(This, f, []), int, int)),
+Expr(Auto(Variable(1), inc, post)),
+Return(Variable(1))
+])
+--------------------------------------------------------------------------
+Class Name: B
+Superclass Name: A
+Fields:
+FIELD: 2, y, B, private, instance, int
+FIELD: 3, s, B, public, instance, user(A)
+Constructors:
+CONSTRUCTOR: 2, private
+Constructor Parameters: 
+Variable Table:
+Constructor Body:
+Block([
+Expr(Assign(Field-access(This, y, 2), Constant(Integer-constant(2)), int, int)),
+Expr(Assign(Field-access(This, s, 3), New-object(A, []), A, A))
+])
+Methods:
+METHOD: 3, f, B, public, instance, int
+Method Parameters: 1
+Variable Table:
+VARIABLE: 1, k, formal, int
+Method Body:
+Block([
+Return(Binary(add, Method-call(Super, f, []), Variable(1)))
+])
+--------------------------------------------------------------------------

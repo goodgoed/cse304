@@ -1,0 +1,9 @@
+class Overloading {
+  void print(int x) {
+    // Implementation
+  }
+
+  void print(float x) {
+    // Implementation
+  }
+}

@@ -1,0 +1,35 @@
+--------------------------------------------------------------------------
+Class Name: Circle
+Superclass Name: 
+Fields:
+FIELD: 1, pi, Circle, public, static, float
+FIELD: 2, radius, Circle, public, instance, float
+Constructors:
+CONSTRUCTOR: 1, public
+Constructor Parameters: 1
+Variable Table:
+VARIABLE: 1, r, formal, float
+Constructor Body:
+Block([
+Expr(Assign(Field-access(This, radius, 2), Variable(1), float, float)),
+Expr(Assign(Field-access(Class(Circle), pi, 1), Constant(Float-constant(3.14159)), float, float))
+])
+Methods:
+--------------------------------------------------------------------------
+Class Name: test034
+Superclass Name: 
+Fields:
+Constructors:
+Methods:
+METHOD: 1, main, test034, public, static, void
+Method Parameters: 
+Variable Table:
+VARIABLE: 1, x, local, float
+VARIABLE: 2, c, local, user(Circle)
+Method Body:
+Block([
+Expr(Assign(Variable(1), Constant(Float-constant(5.0)), float, float)),
+Expr(Assign(Variable(2), New-object(Circle, [Variable(1)]), Circle, Circle))
+])
+--------------------------------------------------------------------------
+

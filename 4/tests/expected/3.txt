@@ -1,0 +1,30 @@
+--------------------------------------------------------------------------
+Class Name: StaticExample
+Superclass Name: 
+Fields:
+FIELD: 1, counter, StaticExample, private, static, int
+Constructors:
+Methods:
+METHOD: 1, incrementCounter, StaticExample, private, static, int
+Method Parameters: 
+Variable Table:
+Method Body:
+Block([
+Expr(Auto(Field-access(This, counter, 1), inc, post)),
+Return(Field-access(This, counter, 1))
+])
+--------------------------------------------------------------------------
+Class Name: A
+Superclass Name: 
+Fields:
+Constructors:
+Methods:
+METHOD: 2, incrementCounter, A, private, instance, int
+Method Parameters: 
+Variable Table:
+Method Body:
+Block([
+Expr(Auto(Field-access(Class(StaticExample), counter, 1), inc, post)),
+Return(Field-access(Class(StaticExample), counter, 1))
+])
+--------------------------------------------------------------------------

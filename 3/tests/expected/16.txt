@@ -1,0 +1,17 @@
+--------------------------------------------------------------------------
+Class Name: test001
+Superclass Name: 
+Fields:
+Constructors:
+Methods:
+METHOD: 1, main, test001, public, static
+Method Parameters: 
+Variable Table:
+VARIABLE: 1, a, local, boolean
+VARIABLE: 2, b, local, boolean
+Method Body:
+Block([
+Expr(Assign(Variable(1), Constant(True))),
+Expr(Assign(Variable(2), Unary(neg, Variable(1))))
+])
+--------------------------------------------------------------------------
