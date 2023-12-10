@@ -92,7 +92,7 @@ class TypeChecker(NodeVisitor):
         condition_type = node.condition.type
         body_type_correct = node.body.type_correct
 
-        if not condition_type.isError() and body_type_correct:
+        if not condition_type.isError() and condition_type.isBoolean() and body_type_correct:
             node.type_correct = True
         else:
             print(f"ERROR [{node.start}:{node.end}]: Condition must be boolean in the While Statement")
@@ -137,7 +137,8 @@ class TypeChecker(NodeVisitor):
                 print(f"ERROR [{node.start}:{node.end}]: Return type did not match")
                 exit(1)
         else:
-            node.type_correct = False
+            print(f"ERROR [{node.start}:{node.end}]: Return type did not match")
+            exit(1) 
 
         # print(f"DEBUG: {type(node).__name__} type_correct -> {node.type_correct}", file=sys.stderr)
 

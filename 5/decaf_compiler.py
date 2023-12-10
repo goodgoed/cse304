@@ -44,13 +44,15 @@ def main():
     typeChecker = TypeChecker(symbolTable)
     typeChecker.visit(result)
 
-    # Generate Code
-    abstractMI = AbstractMI()
-    codeGenerator = CodeGenerator(symbolTable,abstractMI)
-    codeGenerator.visit(result)
-    code = codeGenerator.code
+    print(result)
 
-    print(code)
+    # Generate Code
+    # abstractMI = AbstractMI()
+    # codeGenerator = CodeGenerator(symbolTable,abstractMI)
+    # codeGenerator.visit(result)
+    # code = codeGenerator.code
+
+    # print(code)
 
     # #Emit to file
     # fn = os.path.splitext(os.path.basename(fn))[0] + ".ami"
