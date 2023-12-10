@@ -1,0 +1,17 @@
+class B {
+    int w;
+    int x;
+}
+
+class C extends B {
+    int y;
+}
+
+class D extends C {
+    int z;
+    int x;
+
+    public static void main() {
+        this.x = 10;
+    }
+}

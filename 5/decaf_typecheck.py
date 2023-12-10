@@ -43,11 +43,11 @@ class TypeChecker(NodeVisitor):
         else:
             return False
 
-    def visit_Program(self, node):
+    def visit_Program(self, node, context):
         for _class in node.result:
             _class.accept(self)
 
-    def visit_Class_Record(self, node):
+    def visit_Class_Record(self, node, context):
         self.current_class = node.name
         for constructor in node.constructors:
             constructor.accept(self)
@@ -57,18 +57,18 @@ class TypeChecker(NodeVisitor):
             field.accept(self)
         self.current_class = None
 
-    def visit_Constructor_Record(self, node):
+    def visit_Constructor_Record(self, node, context):
         node.body.accept(self)
 
-    def visit_Method_Record(self, node):
+    def visit_Method_Record(self, node, context):
         self.current_method_id = node.id
         node.body.accept(self)
         self.current_method_id = None
 
-    def visit_VarDeclStmt(self, node):
+    def visit_VarDeclStmt(self, node, context):
         node.type_correct = True
 
-    def visit_IfStmt(self, node):
+    def visit_IfStmt(self, node, context):
         node.condition.accept(self)
         node.then_stmt.accept(self)
         node.else_stmt.accept(self)
@@ -85,7 +85,7 @@ class TypeChecker(NodeVisitor):
 
         # print(f"DEBUG: {type(node).__name__} type_correct -> {node.type_correct}", file=sys.stderr)
 
-    def visit_WhileStmt(self, node):
+    def visit_WhileStmt(self, node, context):
         node.condition.accept(self)
         node.body.accept(self)
         
@@ -100,7 +100,7 @@ class TypeChecker(NodeVisitor):
 
         # print(f"DEBUG: {type(node).__name__} type_correct -> {node.type_correct}", file=sys.stderr)
 
-    def visit_ForStmt(self, node):
+    def visit_ForStmt(self, node, context):
         node.initializer.accept(self)
         node.condition.accept(self)
         node.update.accept(self)
@@ -119,7 +119,7 @@ class TypeChecker(NodeVisitor):
         
         # # print(f"DEBUG: {type(node).__name__} type_correct -> {node.type_correct}", file=sys.stderr)
 
-    def visit_ReturnStmt(self, node):
+    def visit_ReturnStmt(self, node, context):
         method_record = self.s.lookup_method(self.current_method_id)
         return_type = method_record.return_type
         
@@ -141,7 +141,7 @@ class TypeChecker(NodeVisitor):
 
         # print(f"DEBUG: {type(node).__name__} type_correct -> {node.type_correct}", file=sys.stderr)
 
-    def visit_ExprStmt(self, node):
+    def visit_ExprStmt(self, node, context):
         node.expr.accept(self)
         expr_type = node.expr.type
         if not expr_type.isError():
@@ -151,7 +151,7 @@ class TypeChecker(NodeVisitor):
         
         # print(f"DEBUG: {type(node).__name__} type_correct -> {node.type_correct}", file=sys.stderr)
 
-    def visit_BlockStmt(self, node):
+    def visit_BlockStmt(self, node, context):
         node.type_correct = True
         for stmt in node.stmt_list:
             stmt.accept(self)
@@ -160,16 +160,16 @@ class TypeChecker(NodeVisitor):
 
         # print(f"DEBUG: {type(node).__name__} type_correct -> {node.type_correct}", file=sys.stderr)
 
-    def visit_BreakStmt(self, node):
+    def visit_BreakStmt(self, node, context):
         node.type_correct = True
 
-    def visit_ContinueStmt(self, node):
+    def visit_ContinueStmt(self, node, context):
         node.type_correct = True
 
-    def visit_SkipStmt(self, node):
+    def visit_SkipStmt(self, node, context):
         node.type_correct = True
 
-    def visit_ConstantExpr(self, node):
+    def visit_ConstantExpr(self, node, context):
         if node.constant_type == "integer":
             node.type = Type_Record('int')
         elif node.constant_type == "float":
@@ -181,11 +181,11 @@ class TypeChecker(NodeVisitor):
         elif node.constant_type == "true" or node.constant_type == "false":
             node.type = Type_Record('boolean')
 
-    def visit_VarExpr(self, node):
+    def visit_VarExpr(self, node, context):
         node.type = node.record.type
         # print(f"DEBUG: {type(node).__name__} {node.variable_name} type -> {node.type}", file=sys.stderr)
 
-    def visit_UnaryExpr(self, node):
+    def visit_UnaryExpr(self, node, context):
         node.operand.accept(self)
 
         operator = node.operator
@@ -200,7 +200,7 @@ class TypeChecker(NodeVisitor):
 
         # print(f"DEBUG: {type(node).__name__} type -> {node.type}", file=sys.stderr)
 
-    def visit_BinaryExpr(self, node):
+    def visit_BinaryExpr(self, node, context):
         node.left_operand.accept(self)
         node.right_operand.accept(self)
 
@@ -241,7 +241,7 @@ class TypeChecker(NodeVisitor):
         
         # print(f"DEBUG: {type(node).__name__} type -> {node.type}", file=sys.stderr)
 
-    def visit_AssignExpr(self, node):
+    def visit_AssignExpr(self, node, context):
         node.left_operand.accept(self)
         node.right_operand.accept(self)
 
@@ -258,7 +258,7 @@ class TypeChecker(NodeVisitor):
 
         # print(f"DEBUG: {type(node).__name__} type -> {node.type}", file=sys.stderr)
 
-    def visit_AutoExpr(self, node):
+    def visit_AutoExpr(self, node, context):
         node.operand.accept(self)
 
         operand_type = node.operand.type
@@ -270,7 +270,7 @@ class TypeChecker(NodeVisitor):
 
         # print(f"DEBUG: {type(node).__name__} type -> {node.type}", file=sys.stderr)
 
-    def visit_FieldAccessExpr(self, node):
+    def visit_FieldAccessExpr(self, node, context):
         node.base.accept(self)
 
         base_type = node.base.type
@@ -309,7 +309,7 @@ class TypeChecker(NodeVisitor):
 
         # print(f"DEBUG: {type(node).__name__} type -> {node.type}", file=sys.stderr)
     
-    def visit_MethodCallExpr(self, node):
+    def visit_MethodCallExpr(self, node, context):
         node.base.accept(self)
         for arg in node.arguments:
             arg.accept(self)
@@ -324,6 +324,7 @@ class TypeChecker(NodeVisitor):
             print(f"ERROR [{node.start}:{node.end}]: Method ({method_name}) was not defined")
             exit(1)
         
+        node.id = method_record.id
         method_record_containing_class = method_record.containing_class
         method_record_visibility = method_record.visibility
         method_record_applicability = method_record.applicability
@@ -365,7 +366,7 @@ class TypeChecker(NodeVisitor):
 
         # print(f"DEBUG: {type(node).__name__} type -> {node.type}", file=sys.stderr)
 
-    def visit_NewObjectExpr(self, node):
+    def visit_NewObjectExpr(self, node, context):
         class_name = node.class_name
         for arg in node.constructor_args:
             arg.accept(self)
@@ -386,6 +387,7 @@ class TypeChecker(NodeVisitor):
         else:
             constructor_record = constructor_record[0]
 
+        node.id = constructor_record.id
         constructor_parameters = constructor_record.parameters
         constructor_visibility = constructor_record.visibility
 
@@ -406,10 +408,10 @@ class TypeChecker(NodeVisitor):
 
         # print(f"DEBUG: {type(node).__name__} type -> {node.type}", file=sys.stderr)
 
-    def visit_ThisExpr(self, node):
+    def visit_ThisExpr(self, node, context):
         node.type = Type_Record(self.current_class)
 
-    def visit_SuperExpr(self, node):
+    def visit_SuperExpr(self, node, context):
         current_class_record = self.s.lookup_class(self.current_class)
         super_class_record = self.s.lookup_class(current_class_record['super_class'])
 
@@ -421,7 +423,7 @@ class TypeChecker(NodeVisitor):
         
         # print(f"DEBUG: {type(node).__name__} type -> {node.type}", file=sys.stderr)
 
-    def visit_ClassRefExpr(self, node):
+    def visit_ClassRefExpr(self, node, context):
         class_record = self.s.lookup_class(node.class_name)
 
         if class_record:
@@ -430,6 +432,6 @@ class TypeChecker(NodeVisitor):
             print(f"ERROR [{node.start}:{node.end}]: Class ({node.class_name}) was not defined")
             exit(1)
 
-    def visit_IdRefExpr(self, node):
+    def visit_IdRefExpr(self, node, context):
         node.node.accept(self)
         node.type = node.node.type

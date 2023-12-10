@@ -98,7 +98,7 @@ def t_ID(t):
     return t
 
 def t_FLOATCONST(t):
-    r'\d+.\d+'  #accounts for all floats in decaf.pdf
+    r'\d+\.\d+'  #accounts for all floats in decaf.pdf
     t.value = float(t.value)
     return t
 

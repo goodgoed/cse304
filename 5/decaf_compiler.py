@@ -46,7 +46,7 @@ def main():
 
     # Generate Code
     abstractMI = AbstractMI()
-    codeGenerator = CodeGenerator(abstractMI)
+    codeGenerator = CodeGenerator(symbolTable,abstractMI)
     codeGenerator.visit(result)
     code = codeGenerator.code
 

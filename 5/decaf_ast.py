@@ -4,8 +4,8 @@
 import copy
 
 class ASTNode:
-    def accept(self, visitor):
-        return visitor.visit(self)
+    def accept(self, visitor, context=None):
+        return visitor.visit(self, context)
 
 class Program(ASTNode):
     def __init__(self, classes):
@@ -1138,6 +1138,7 @@ class Symbol_Table():
 
         t_record = Type_Record(type)
         v_record = Variable_Record(name, self.variable_id_counter, kind, t_record)
+
         self.variable_stack[-1][name] = v_record
         self.variable_id_counter+=1
 
@@ -1176,7 +1177,6 @@ class Symbol_Table():
         for formal in self.formals:
             if not formal.getVariables(): 
                 continue
-            
             name = formal.getVariables()
             type = formal.getType()
             kind = 'formal'
@@ -1185,9 +1185,10 @@ class Symbol_Table():
             
             self.variable_stack[-1][name] = variable_record
             self.variable_id_counter+=1
+        self.formals = []
     
     def exit_block(self):
-        self.variable_table.append( self.variable_stack.pop())
+        self.variable_table.append(self.variable_stack.pop())
         self.formals = []
     
     def lookup_variable(self, name):
